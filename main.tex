@@ -1,0 +1,68 @@
+
+\documentclass[openany, a4paper, 12pt]{book}
+
+% パッケージ
+\usepackage[pdfborder={0 0 0}, colorlinks=false]{hyperref} % リンクの色なし
+\usepackage{graphicx}
+\usepackage{xeCJK}
+\usepackage[font=small,labelfont=bf]{caption} 
+\usepackage[a4paper, margin=3cm]{geometry}
+\usepackage{hyperref}
+\usepackage{setspace}
+\usepackage{fancyhdr}
+\usepackage{float}
+\usepackage{fontspec}  % フォント指定に必要
+
+% List of figures
+\usepackage{tocloft}
+\renewcommand{\cftfigpresnum}{Figure~}  % "Figure " を番号の前につける
+\renewcommand{\cftfignumwidth}{7em}     % 幅を調整（Figure~2.1などを収める）
+% List of tables
+\renewcommand{\cfttabpresnum}{Table~}   % ← "Table " を番号の前に表示
+\renewcommand{\cfttabnumwidth}{7em}     % ← 表示幅の調整（必要に応じて調整）
+
+\usepackage[justification=raggedright,singlelinecheck=false]{caption} % キャプションを左揃え
+\pagestyle{plain}
+
+% 日本語と英語のタイトルを定義する
+\newcommand{\etitle}{English Title}
+\newcommand{\etitlejp}{日本語タイトル}
+
+\setmainfont{Times New Roman} % 英語フォント
+\setCJKmainfont{ヒラギノ明朝 ProN}  % Macでよく使える日本語フォント
+
+% Chapterの見出しを小さく整える
+\usepackage{titlesec}
+\titleformat{\chapter}[display]
+  {\normalfont\bfseries}
+  {\fontsize{10pt}{12pt}\selectfont \chaptername\ \thechapter}
+  {10pt}
+  {\Huge}
+
+% -----------------------------------------------------
+
+% ここから本文
+\begin{document}
+\thispagestyle{empty}
+\include{titlepage}
+\setcounter{page}{1}  % ページ番号を1にリセット
+\pagestyle{plain}
+\include{abstract}
+
+\tableofcontents
+\clearpage
+\listoffigures   % 図の一覧（List of Figures）
+\listoftables    % 表の一覧（List of Tables）
+\clearpage
+
+\include{01_intro}
+\include{02_method}
+\include{03_result}
+\include{04_discussion}
+\include{05_shaji}
+
+\bibliographystyle{unsrt}
+%\bibliographystyle{abbrv}
+\bibliography{ref.bib}
+
+\end{document}
